@@ -1,0 +1,7 @@
+<resources>
+
+<style name="AlertTextAppearance">
+        <item name="android:textColor">#fff</item>
+</style>
+
+</resources>

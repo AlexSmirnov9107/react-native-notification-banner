@@ -85,7 +85,7 @@ public class RNNotificationBannerModule extends ReactContextBaseJavaModule {
     int titleColorValue = 0;
     if (titleColor != null && titleColor.length() > 0) {
 //      config.setTextColor(Color.parseColor(titleColor));
-        titleColorValue = Color.parseColor(titleColor);
+        // titleColorValue = Color.parseColor(titleColor);
     }
     if (titleSize != 0) {
 //      config.setTextSize(titleSize);
@@ -106,15 +106,14 @@ public class RNNotificationBannerModule extends ReactContextBaseJavaModule {
       } else {
         alerter = alerter.hideIcon();
       }
-      
+      alerter = alerter.setTitleAppearance(R.style.AlertTextAppearance);
+      alerter = alerter.setTextAppearance(R.style.AlertTextAppearance);
+
       alerter = alerter.enableSwipeToDismiss();
       if (tintColor != 0) {
         alerter = alerter.setBackgroundColorInt(tintColor);
       }
-       if (titleColorValue != 0) {
-        alerter = alerter.setTitleAppearance(titleColorValue);
-        alerter = alerter.setTextAppearance(titleColorValue);
-      }
+
 
       if (!dismissable) {
         alerter = alerter.setDismissable(dismissable);
