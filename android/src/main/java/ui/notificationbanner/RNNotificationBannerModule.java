@@ -82,14 +82,15 @@ public class RNNotificationBannerModule extends ReactContextBaseJavaModule {
         }
       }
     }
-
+    int titleColorValue = 0;
     if (titleColor != null && titleColor.length() > 0) {
 //      config.setTextColor(Color.parseColor(titleColor));
+        titleColorValue = Color.parseColor(titleColor);
     }
     if (titleSize != 0) {
 //      config.setTextSize(titleSize);
     }
-
+    
 
     if (tintColorValue != null && tintColorValue.length() > 0) {
       tintColor = Color.parseColor(tintColorValue);
@@ -101,12 +102,18 @@ public class RNNotificationBannerModule extends ReactContextBaseJavaModule {
 
       if (iconDrawable != null && enableProgress == false) {
         alerter = alerter.setIcon(iconDrawable);
+        alerter = alerter.setIconColorFilter(0);
       } else {
         alerter = alerter.hideIcon();
       }
-
+      
+      alerter = alerter.enableSwipeToDismiss();
       if (tintColor != 0) {
         alerter = alerter.setBackgroundColorInt(tintColor);
+      }
+       if (titleColorValue != 0) {
+        alerter = alerter.setTitleAppearance(titleColorValue);
+        alerter = alerter.setTextAppearance(titleColorValue);
       }
 
       if (!dismissable) {
